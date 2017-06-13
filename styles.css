@@ -1,3 +1,8 @@
 * {
   margin: 0;
 }
+
+.shirt-container {
+  float: left;
+  width: 25%;
+}
