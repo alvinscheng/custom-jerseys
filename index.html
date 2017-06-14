@@ -20,24 +20,22 @@
               <li class="list-group-item">
                 <h6 class="list-group-item-heading">1. Options</h6>
                 <div class="list-group-item">
-                  <label class="radio-inline">
-                    <input type="radio" name="gender" id="male" value="male"/>Male
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="gender" id="female" value="female"/>Female
-                  </label>
-                  <span class="btn-group">
-                    <button type="button" id="size" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Size <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">XS</a></li>
-                      <li><a href="#">S</a></li>
-                      <li><a href="#">M</a></li>
-                      <li><a href="#">L</a></li>
-                      <li><a href="#">XL</a></li>
-                    </ul>
-                  </span>
+                  <div id="gender">
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" id="male" value="male"/>Male
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" id="female" value="female"/>Female
+                    </label>
+                  </div>
+                  <select id="size">
+                    <option value="">Size</option>
+                    <option>XS</option>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                  </select>
                 </div>
               </li>
             </div>
