@@ -12,16 +12,48 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-4">
-          <img src="images/male-white-white-front.jpg" class="img-responsive"/>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Customize Your Jersey!</h4>
+            </div>
+            <div class="list-group">
+              <li class="list-group-item">
+                <h6 class="list-group-item-heading">1. Options</h6>
+                <form id="options-form" class="list-group-item">
+                  <div id="gender">
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" id="male" value="male"/>Male
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="gender" id="female" value="female"/>Female
+                    </label>
+                  </div>
+                  <select id="size">
+                    <option value="">Size</option>
+                    <option>XS</option>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                  </select>
+                  <div class="next-btn">
+                    <button type="submit">Next</button>
+                  </div>
+                </form>
+              </li>
+            </div>
+          </div>
         </div>
         <div class="col-xs-4">
-          <img src="images/male-white-white-back.jpg" class="img-responsive"/>
+          <img id="front-img" src="images/male-white-white-front.jpg" class="img-responsive"/>
+        </div>
+        <div class="col-xs-4">
+          <img id="back-img" src="images/male-white-white-back.jpg" class="img-responsive"/>
         </div>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="main.js"></script>
   </body>
 </html>
