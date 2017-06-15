@@ -7,20 +7,22 @@ var primaryColor = 'white'
 var secondaryColor = 'white'
 var gender = 'male'
 
-$genderForm.addEventListener('change', function (event) {
-  gender = event.target.value
+function changeJersey() {
   $front.src = 'images/' + gender + '-' + primaryColor + '-' + secondaryColor + '-front.jpg'
   $back.src = 'images/' + gender + '-' + primaryColor + '-' + secondaryColor + '-back.jpg'
+}
+
+$genderForm.addEventListener('change', function (event) {
+  gender = event.target.value
+  changeJersey()
 })
 
 $primaryColor.addEventListener('change', function (event) {
   primaryColor = event.target.value
-  $front.src = 'images/' + gender + '-' + primaryColor + '-' + secondaryColor + '-front.jpg'
-  $back.src = 'images/' + gender + '-' + primaryColor + '-' + secondaryColor + '-back.jpg'
+  changeJersey()
 })
 
 $secondaryColor.addEventListener('change', function (event) {
   secondaryColor = event.target.value
-  $front.src = 'images/' + gender + '-' + primaryColor + '-' + secondaryColor + '-front.jpg'
-  $back.src = 'images/' + gender + '-' + primaryColor + '-' + secondaryColor + '-back.jpg'
+  changeJersey()
 })
