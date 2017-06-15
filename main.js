@@ -10,22 +10,22 @@ var $genderForm = document.querySelector('#gender')
 var $primaryColor = document.querySelector('#jersey-color-primary')
 var $secondaryColor = document.querySelector('#jersey-color-secondary')
 
-function changeJersey() {
-  $front.src = 'images/' + jerseyConfig.gender + '-' + jerseyConfig.primaryColor + '-' + jerseyConfig.secondaryColor + '-front.jpg'
-  $back.src = 'images/' + jerseyConfig.gender + '-' + jerseyConfig.primaryColor + '-' + jerseyConfig.secondaryColor + '-back.jpg'
+function changeJersey(config) {
+  $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
+  $back.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-back.jpg'
 }
 
 $genderForm.addEventListener('change', function (event) {
   jerseyConfig.gender = event.target.value
-  changeJersey()
+  changeJersey(jerseyConfig)
 })
 
 $primaryColor.addEventListener('change', function (event) {
   jerseyConfig.primaryColor = event.target.value
-  changeJersey()
+  changeJersey(jerseyConfig)
 })
 
 $secondaryColor.addEventListener('change', function (event) {
   jerseyConfig.secondaryColor = event.target.value
-  changeJersey()
+  changeJersey(jerseyConfig)
 })
