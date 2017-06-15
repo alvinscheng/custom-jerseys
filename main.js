@@ -2,13 +2,14 @@ var jerseyConfig = {
   gender: 'male',
   primaryColor: 'white',
   secondaryColor: 'white',
-  name: 'Lastname',
+  lastName: 'Lastname',
   number: 0
 }
 
 var $front = document.querySelector('#front-img')
 var $back = document.querySelector('#back-img')
 var $jerseyNumber = document.querySelector('#jersey-number')
+var $jerseyName = document.querySelector('#jersey-name')
 var $nameAndNumber = document.querySelector('#name-number')
 var $genderForm = document.querySelector('#gender')
 var $primaryColor = document.querySelector('#jersey-color-primary')
@@ -17,6 +18,7 @@ var $secondaryColor = document.querySelector('#jersey-color-secondary')
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
   $back.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-back.jpg'
+  $jerseyName.textContent = config.lastName
   $jerseyNumber.textContent = config.number
 }
 
@@ -38,6 +40,8 @@ $secondaryColor.addEventListener('change', function (event) {
 $nameAndNumber.addEventListener('submit', function (event) {
   event.preventDefault()
   var $number = document.querySelector('#number')
+  var $name = document.querySelector('#name')
+  jerseyConfig.lastName = $name.value
   jerseyConfig.number = $number.value
   changeJersey(jerseyConfig)
 })
