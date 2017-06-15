@@ -1,7 +1,9 @@
 var jerseyConfig = {
   gender: 'male',
   primaryColor: 'white',
-  secondaryColor: 'white'
+  secondaryColor: 'white',
+  name: 'Lastname',
+  number: 0
 }
 
 var $front = document.querySelector('#front-img')
