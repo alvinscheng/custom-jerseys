@@ -10,3 +10,10 @@ body {
 .colors {
   margin: 0.5rem 1rem 0.5rem 0;
 }
+
+#jersey-number {
+  position: absolute;
+  top: 30%;
+  left: 38%;
+  font-size: 10vw;
+}
