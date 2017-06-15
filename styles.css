@@ -2,11 +2,11 @@
   margin: 0;
 }
 
-#gender {
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+body {
+  font-family: 'Graduate', cursive;
 }
 
-.next-btn {
-  float: right;
+#gender,
+.colors {
+  margin: 0.5rem 1rem 0.5rem 0;
 }

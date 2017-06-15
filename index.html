@@ -7,19 +7,20 @@
     <title>Custom Jerseys</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
     <link rel="stylesheet" href="styles.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet"/>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-xs-4">
-          <div class="panel panel-default">
+          <form class="panel panel-default" id="customize-form">
             <div class="panel-heading">
               <h4>Customize Your Jersey!</h4>
             </div>
-            <div class="list-group">
+            <ul class="list-group">
               <li class="list-group-item">
                 <h6 class="list-group-item-heading">1. Options</h6>
-                <form id="options-form" class="list-group-item">
+                <div id="options" class="list-group-item">
                   <div id="gender">
                     <label class="radio-inline">
                       <input type="radio" name="gender" id="male" value="male"/>Male
@@ -28,21 +29,38 @@
                       <input type="radio" name="gender" id="female" value="female"/>Female
                     </label>
                   </div>
-                  <select id="size">
+                  <select id="jersey-size" name="size">
                     <option value="">Size</option>
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
+                    <option value="xs">XS</option>
+                    <option value="s">S</option>
+                    <option value="m">M</option>
+                    <option value="l">L</option>
+                    <option value="xl">XL</option>
                   </select>
-                  <div class="next-btn">
-                    <button type="submit">Next</button>
-                  </div>
-                </form>
+                </div>
               </li>
-            </div>
-          </div>
+
+              <li class="list-group-item">
+                <h6 class="list-group-item-heading">2. Color</h6>
+                <div id="colors" class="list-group-item">
+                  <select class="colors" id="jersey-color-primary" name="color-primary">
+                    <option value="white">Primary</option>
+                    <option value="black">Black</option>
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="white">White</option>
+                  </select>
+                  <select class="colors" id="jersey-color-secondary" name="color-secondary">
+                    <option value="white">Secondary</option>
+                    <option value="black">Black</option>
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="white">White</option>
+                  </select>
+                </div>
+              </li>
+            </ul>
+          </form>
         </div>
         <div class="col-xs-4">
           <img id="front-img" src="images/male-white-white-front.jpg" class="img-responsive"/>
