@@ -11,16 +11,20 @@ body {
   margin: 0.5rem 1rem 0.5rem 0;
 }
 
-#jersey-name {
-  position: absolute;
-  width: 100%;
-  top: 25%;
-  text-align: center;
-}
-
+.jersey-images,
+#jersey-name,
 #jersey-number {
   position: absolute;
   width: 100%;
+}
+
+#jersey-name {
+  top: 25%;
+  text-align: center;
+  font-size: 2vw;
+}
+
+#jersey-number {
   top: 30%;
   text-align: center;
   font-size: 10vw;
