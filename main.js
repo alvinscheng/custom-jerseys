@@ -92,4 +92,15 @@ function addToCart(item, qty) {
     cart.push(item)
   }
   $cartCounter.textContent = cart.length
+  var $cartMenu = document.querySelector('#cart-menu')
+  var $item = document.createElement('li')
+  var imgSource = 'images/' + jerseyConfig.gender + '-' + jerseyConfig.primaryColor + '-' + jerseyConfig.secondaryColor + '-back.jpg'
+  $item.appendChild(renderImage(imgSource))
+  $cartMenu.appendChild($item)
+}
+
+function renderImage(img) {
+  var $image = document.createElement('img')
+  $image.src = img
+  return $image
 }
