@@ -10,9 +10,7 @@ body {
   margin: 0.5rem 0;
 }
 
-.jersey-images,
-#jersey-name,
-#jersey-number {
+.jersey-image {
   position: absolute;
   width: 100%;
 }
