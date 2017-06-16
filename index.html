@@ -12,10 +12,19 @@
   <body>
     <header>
       <nav id="navbar" class="navbar navbar-default">
-        <a href="#" class="icon-container pull-right">
-          <span id="cart-icon" class="glyphicon glyphicon-shopping-cart cart-icon" aria-hidden="true"></span>
-          <span id="cart-quant" class="cart-icon">0</span>
-        </a>
+
+        <div class="dropdown pull-right">
+          <button class="btn btn-default dropdown-toggle icon-container" type="button" id="cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span id="cart-icon" class="glyphicon glyphicon-shopping-cart cart-icon" aria-hidden="true"></span>
+            <span id="cart-quant" class="cart-icon">0</span>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="cart">
+            <li></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Checkout</a></li>
+          </ul>
+        </div>
       </nav>
     </header>
     <div class="container">
