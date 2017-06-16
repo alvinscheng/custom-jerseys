@@ -4,8 +4,7 @@ var jerseyConfig = {
   primaryColor: 'white',
   secondaryColor: 'white',
   lastName: 'Lastname',
-  number: 0,
-  quantity: 0
+  number: 0
 }
 
 var cart = []
@@ -36,8 +35,7 @@ function resetJersey() {
     primaryColor: 'white',
     secondaryColor: 'white',
     lastName: 'Lastname',
-    number: 0,
-    quantity: 0
+    number: 0
   }
   changeJersey(jerseyConfig)
 }
