@@ -15,8 +15,10 @@ var $jerseyNumber = document.querySelector('#jersey-number')
 var $jerseyName = document.querySelector('#jersey-name')
 var $customizeForm = document.querySelector('#customize-form')
 var $genderForm = document.querySelector('#gender')
+var $jerseySize = document.querySelector('#jersey-size')
 var $primaryColor = document.querySelector('#jersey-color-primary')
 var $secondaryColor = document.querySelector('#jersey-color-secondary')
+var $quantity = document.querySelector('#quantity')
 var $cartButton = document.querySelector('#cart-btn')
 
 function changeJersey(config) {
@@ -29,6 +31,10 @@ function changeJersey(config) {
 $genderForm.addEventListener('change', function (event) {
   jerseyConfig.gender = event.target.value
   changeJersey(jerseyConfig)
+})
+
+$jerseySize.addEventListener('change', function (event) {
+  jerseyConfig.size = event.target.value
 })
 
 $primaryColor.addEventListener('change', function (event) {
@@ -48,6 +54,10 @@ $customizeForm.addEventListener('submit', function (event) {
   jerseyConfig.lastName = $name.value
   jerseyConfig.number = $number.value
   changeJersey(jerseyConfig)
+})
+
+$quantity.addEventListener('change', function (event) {
+  jerseyConfig.quantity = event.target.value
 })
 
 $cartButton.addEventListener('click', function (event) {
