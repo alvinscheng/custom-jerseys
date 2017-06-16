@@ -1,11 +1,16 @@
 var jerseyConfig = {
   gender: 'male',
   primaryColor: 'white',
-  secondaryColor: 'white'
+  secondaryColor: 'white',
+  lastName: 'Lastname',
+  number: 0
 }
 
 var $front = document.querySelector('#front-img')
 var $back = document.querySelector('#back-img')
+var $jerseyNumber = document.querySelector('#jersey-number')
+var $jerseyName = document.querySelector('#jersey-name')
+var $customizeForm = document.querySelector('#customize-form')
 var $genderForm = document.querySelector('#gender')
 var $primaryColor = document.querySelector('#jersey-color-primary')
 var $secondaryColor = document.querySelector('#jersey-color-secondary')
@@ -13,6 +18,8 @@ var $secondaryColor = document.querySelector('#jersey-color-secondary')
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
   $back.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-back.jpg'
+  $jerseyName.textContent = config.lastName
+  $jerseyNumber.textContent = config.number
 }
 
 $genderForm.addEventListener('change', function (event) {
@@ -27,5 +34,14 @@ $primaryColor.addEventListener('change', function (event) {
 
 $secondaryColor.addEventListener('change', function (event) {
   jerseyConfig.secondaryColor = event.target.value
+  changeJersey(jerseyConfig)
+})
+
+$customizeForm.addEventListener('submit', function (event) {
+  event.preventDefault()
+  var $number = document.querySelector('#number')
+  var $name = document.querySelector('#name')
+  jerseyConfig.lastName = $name.value
+  jerseyConfig.number = $number.value
   changeJersey(jerseyConfig)
 })
