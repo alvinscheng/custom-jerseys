@@ -10,7 +10,7 @@ var $front = document.querySelector('#front-img')
 var $back = document.querySelector('#back-img')
 var $jerseyNumber = document.querySelector('#jersey-number')
 var $jerseyName = document.querySelector('#jersey-name')
-var $nameAndNumber = document.querySelector('#name-number')
+var $customizeForm = document.querySelector('#customize-form')
 var $genderForm = document.querySelector('#gender')
 var $primaryColor = document.querySelector('#jersey-color-primary')
 var $secondaryColor = document.querySelector('#jersey-color-secondary')
@@ -37,7 +37,7 @@ $secondaryColor.addEventListener('change', function (event) {
   changeJersey(jerseyConfig)
 })
 
-$nameAndNumber.addEventListener('submit', function (event) {
+$customizeForm.addEventListener('submit', function (event) {
   event.preventDefault()
   var $number = document.querySelector('#number')
   var $name = document.querySelector('#name')
