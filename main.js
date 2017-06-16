@@ -30,6 +30,19 @@ function changeJersey(config) {
   $jerseyNumber.textContent = config.number
 }
 
+function resetJersey() {
+  jerseyConfig = {
+    gender: 'male',
+    size: null,
+    primaryColor: 'white',
+    secondaryColor: 'white',
+    lastName: 'Lastname',
+    number: 0,
+    quantity: 0
+  }
+  changeJersey(jerseyConfig)
+}
+
 $genderForm.addEventListener('change', function (event) {
   jerseyConfig.gender = event.target.value
   changeJersey(jerseyConfig)
@@ -65,8 +78,7 @@ $cartButton.addEventListener('click', function (event) {
     cartCounter += jerseyConfig.quantity
     $cartCounter.textContent = cartCounter
     $customizeForm.reset()
-    $front.src = 'images/male-white-white-front.jpg'
-    $back.src = 'images/male-white-white-back.jpg'
+    resetJersey()
   }
 })
 
