@@ -6,9 +6,8 @@ body {
   font-family: 'Graduate', cursive;
 }
 
-#gender,
-.colors {
-  margin: 0.5rem 1rem 0.5rem 0;
+.choices {
+  margin: 0.5rem 0;
 }
 
 .jersey-images,
@@ -19,13 +18,13 @@ body {
 }
 
 #jersey-name {
-  top: 25%;
+  top: 28%;
   text-align: center;
-  font-size: 2vw;
+  font-size: 1.8vw;
 }
 
 #jersey-number {
   top: 30%;
   text-align: center;
-  font-size: 10vw;
+  font-size: 8vw;
 }
