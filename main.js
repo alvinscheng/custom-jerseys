@@ -20,6 +20,8 @@ var $primaryColor = document.querySelector('#jersey-color-primary')
 var $secondaryColor = document.querySelector('#jersey-color-secondary')
 var $quantity = document.querySelector('#quantity')
 var $cartButton = document.querySelector('#cart-btn')
+var $cartCounter = document.querySelector('#cart-quant')
+var cartCounter = 0
 
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
@@ -56,13 +58,12 @@ $customizeForm.addEventListener('submit', function (event) {
   changeJersey(jerseyConfig)
 })
 
-$quantity.addEventListener('change', function (event) {
-  jerseyConfig.quantity = event.target.value
-})
-
 $cartButton.addEventListener('click', function (event) {
   if (validate(jerseyConfig)) {
+    jerseyConfig.quantity = parseInt($quantity.value, 10)
     cart.push(jerseyConfig)
+    cartCounter += jerseyConfig.quantity
+    $cartCounter.textContent = cartCounter
     $customizeForm.reset()
     $front.src = 'images/male-white-white-front.jpg'
     $back.src = 'images/male-white-white-back.jpg'
