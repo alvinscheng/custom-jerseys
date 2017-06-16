@@ -1,9 +1,11 @@
 var jerseyConfig = {
   gender: 'male',
+  size: 'm',
   primaryColor: 'white',
   secondaryColor: 'white',
   lastName: 'Lastname',
-  number: 0
+  number: 0,
+  quantity: 0
 }
 
 var cart = []
