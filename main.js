@@ -63,6 +63,9 @@ $quantity.addEventListener('change', function (event) {
 $cartButton.addEventListener('click', function (event) {
   if (validate(jerseyConfig)) {
     cart.push(jerseyConfig)
+    $customizeForm.reset()
+    $front.src = 'images/male-white-white-front.jpg'
+    $back.src = 'images/male-white-white-back.jpg'
   }
 })
 
