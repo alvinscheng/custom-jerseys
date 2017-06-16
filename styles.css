@@ -26,3 +26,8 @@ body {
   text-align: center;
   font-size: 8vw;
 }
+
+#cart-icon {
+  padding: 10px;
+  font-size: 2em;
+}
