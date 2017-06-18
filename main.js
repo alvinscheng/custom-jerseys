@@ -96,8 +96,7 @@ function addToCart(item, qty) {
   var $item = document.createElement('li')
   var imgSource = 'images/' + jerseyConfig.gender + '-' + jerseyConfig.primaryColor + '-' + jerseyConfig.secondaryColor + '-back.jpg'
   $item.appendChild(renderImage(imgSource))
-  var $divider = document.querySelector('.divider')
-  $cartMenu.insertBefore($item, $divider)
+  $cartMenu.appendChild($item)
 }
 
 function renderImage(img) {
