@@ -21,6 +21,7 @@ var $secondaryColor = document.querySelector('#jersey-color-secondary')
 var $quantity = document.querySelector('#quantity')
 var $cartButton = document.querySelector('#cart-btn')
 var $cartCounter = document.querySelector('#cart-quant')
+var $cartMenu = document.querySelector('#cart-menu')
 
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
@@ -95,15 +96,7 @@ function addToCart(item, qty) {
     cart.push(item)
   }
   $cartCounter.textContent = cart.length
-  var $cartMenu = document.querySelector('#cart-menu')
-  var $item = document.createElement('li')
-  var imgSource = 'images/' + jerseyConfig.gender + '-' + jerseyConfig.primaryColor + '-' + jerseyConfig.secondaryColor + '-back.jpg'
-  $item.appendChild(renderImage(imgSource))
-  $item.appendChild(renderProperty(jerseyConfig, 'name'))
-  $item.appendChild(renderProperty(jerseyConfig, 'number'))
-  $item.appendChild(renderProperty(jerseyConfig, 'size'))
-  $item.appendChild(renderProperty(jerseyConfig, 'quantity'))
-  $cartMenu.appendChild($item)
+  renderCartItem()
 }
 
 function renderImage(img) {
@@ -116,4 +109,14 @@ function renderProperty(item, prop) {
   var $prop = document.createElement('p')
   $prop.textContent = prop + ': ' + item[prop]
   return $prop
+}
+
+function renderCartItem() {
+  var $item = document.createElement('li')
+  $item.appendChild(renderImage($back.src))
+  $item.appendChild(renderProperty(jerseyConfig, 'name'))
+  $item.appendChild(renderProperty(jerseyConfig, 'number'))
+  $item.appendChild(renderProperty(jerseyConfig, 'size'))
+  $item.appendChild(renderProperty(jerseyConfig, 'quantity'))
+  $cartMenu.appendChild($item)
 }
