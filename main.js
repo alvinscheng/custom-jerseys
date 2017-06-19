@@ -3,7 +3,7 @@ var jerseyConfig = {
   size: null,
   primaryColor: 'white',
   secondaryColor: 'white',
-  lastName: 'Lastname',
+  name: 'Lastname',
   number: 0,
   quantity: 1
 }
@@ -25,7 +25,7 @@ var $cartCounter = document.querySelector('#cart-quant')
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
   $back.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-back.jpg'
-  $jerseyName.textContent = config.lastName
+  $jerseyName.textContent = config.name
   $jerseyNumber.textContent = config.number
 }
 
@@ -35,7 +35,7 @@ function resetJersey() {
     size: null,
     primaryColor: 'white',
     secondaryColor: 'white',
-    lastName: 'Lastname',
+    name: 'Lastname',
     number: 0,
     quantity: 1
   }
@@ -65,7 +65,7 @@ $customizeForm.addEventListener('submit', function (event) {
   event.preventDefault()
   var $number = document.querySelector('#number')
   var $name = document.querySelector('#name')
-  jerseyConfig.lastName = $name.value
+  jerseyConfig.name = $name.value
   jerseyConfig.number = $number.value
   changeJersey(jerseyConfig)
 })
@@ -99,6 +99,8 @@ function addToCart(item, qty) {
   var $item = document.createElement('li')
   var imgSource = 'images/' + jerseyConfig.gender + '-' + jerseyConfig.primaryColor + '-' + jerseyConfig.secondaryColor + '-back.jpg'
   $item.appendChild(renderImage(imgSource))
+  $item.appendChild(renderProperty(jerseyConfig, 'name'))
+  $item.appendChild(renderProperty(jerseyConfig, 'number'))
   $item.appendChild(renderProperty(jerseyConfig, 'size'))
   $item.appendChild(renderProperty(jerseyConfig, 'quantity'))
   $cartMenu.appendChild($item)
