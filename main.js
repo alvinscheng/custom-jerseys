@@ -96,6 +96,7 @@ function addToCart(item, qty) {
   var $item = document.createElement('li')
   var imgSource = 'images/' + jerseyConfig.gender + '-' + jerseyConfig.primaryColor + '-' + jerseyConfig.secondaryColor + '-back.jpg'
   $item.appendChild(renderImage(imgSource))
+  $item.appendChild(renderProperty(jerseyConfig, 'size'))
   $cartMenu.appendChild($item)
 }
 
@@ -103,4 +104,10 @@ function renderImage(img) {
   var $image = document.createElement('img')
   $image.src = img
   return $image
+}
+
+function renderProperty(item, prop) {
+  var $prop = document.createElement('p')
+  $prop.textContent = prop + ': ' + item[prop]
+  return $prop
 }
