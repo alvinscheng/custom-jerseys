@@ -4,7 +4,8 @@ var jerseyConfig = {
   primaryColor: 'white',
   secondaryColor: 'white',
   lastName: 'Lastname',
-  number: 0
+  number: 0,
+  quantity: 1
 }
 
 var cart = []
@@ -35,7 +36,8 @@ function resetJersey() {
     primaryColor: 'white',
     secondaryColor: 'white',
     lastName: 'Lastname',
-    number: 0
+    number: 0,
+    quantity: 1
   }
   changeJersey(jerseyConfig)
 }
@@ -71,6 +73,7 @@ $customizeForm.addEventListener('submit', function (event) {
 $cartButton.addEventListener('click', function (event) {
   if (validate(jerseyConfig)) {
     var quantity = parseInt($quantity.value, 10)
+    jerseyConfig.quantity = quantity
     addToCart(jerseyConfig, quantity)
     $customizeForm.reset()
     resetJersey()
@@ -97,6 +100,7 @@ function addToCart(item, qty) {
   var imgSource = 'images/' + jerseyConfig.gender + '-' + jerseyConfig.primaryColor + '-' + jerseyConfig.secondaryColor + '-back.jpg'
   $item.appendChild(renderImage(imgSource))
   $item.appendChild(renderProperty(jerseyConfig, 'size'))
+  $item.appendChild(renderProperty(jerseyConfig, 'quantity'))
   $cartMenu.appendChild($item)
 }
 
