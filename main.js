@@ -114,9 +114,9 @@ function renderProperty(item, prop) {
 function renderCartItem() {
   var $item = document.createElement('li')
   $item.appendChild(renderImage($back.src))
-  $item.appendChild(renderProperty(jerseyConfig, 'name'))
-  $item.appendChild(renderProperty(jerseyConfig, 'number'))
-  $item.appendChild(renderProperty(jerseyConfig, 'size'))
-  $item.appendChild(renderProperty(jerseyConfig, 'quantity'))
+  var props = ['name', 'number', 'size', 'quantity']
+  for (var i = 0; i < props.length; i++) {
+    $item.appendChild(renderProperty(jerseyConfig, props[i]))
+  }
   $cartMenu.appendChild($item)
 }
