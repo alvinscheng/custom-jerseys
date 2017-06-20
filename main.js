@@ -3,8 +3,9 @@ var jerseyConfig = {
   size: null,
   primaryColor: 'white',
   secondaryColor: 'white',
-  lastName: 'Lastname',
-  number: 0
+  name: 'Lastname',
+  number: 0,
+  quantity: 1
 }
 
 var cart = []
@@ -20,11 +21,12 @@ var $secondaryColor = document.querySelector('#jersey-color-secondary')
 var $quantity = document.querySelector('#quantity')
 var $cartButton = document.querySelector('#cart-btn')
 var $cartCounter = document.querySelector('#cart-quant')
+var $cartMenu = document.querySelector('#cart-menu')
 
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
   $back.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-back.jpg'
-  $jerseyName.textContent = config.lastName
+  $jerseyName.textContent = config.name
   $jerseyNumber.textContent = config.number
 }
 
@@ -34,8 +36,9 @@ function resetJersey() {
     size: null,
     primaryColor: 'white',
     secondaryColor: 'white',
-    lastName: 'Lastname',
-    number: 0
+    name: 'Lastname',
+    number: 0,
+    quantity: 1
   }
   changeJersey(jerseyConfig)
 }
@@ -63,7 +66,7 @@ $customizeForm.addEventListener('submit', function (event) {
   event.preventDefault()
   var $number = document.querySelector('#number')
   var $name = document.querySelector('#name')
-  jerseyConfig.lastName = $name.value
+  jerseyConfig.name = $name.value
   jerseyConfig.number = $number.value
   changeJersey(jerseyConfig)
 })
@@ -71,6 +74,7 @@ $customizeForm.addEventListener('submit', function (event) {
 $cartButton.addEventListener('click', function (event) {
   if (validate(jerseyConfig)) {
     var quantity = parseInt($quantity.value, 10)
+    jerseyConfig.quantity = quantity
     addToCart(jerseyConfig, quantity)
     $customizeForm.reset()
     resetJersey()
@@ -92,4 +96,27 @@ function addToCart(item, qty) {
     cart.push(item)
   }
   $cartCounter.textContent = cart.length
+  renderCartItem()
+}
+
+function renderImage(img) {
+  var $image = document.createElement('img')
+  $image.src = img
+  return $image
+}
+
+function renderProperty(item, prop) {
+  var $prop = document.createElement('p')
+  $prop.textContent = prop + ': ' + item[prop]
+  return $prop
+}
+
+function renderCartItem() {
+  var $item = document.createElement('li')
+  $item.appendChild(renderImage($back.src))
+  var props = ['name', 'number', 'size', 'quantity']
+  for (var i = 0; i < props.length; i++) {
+    $item.appendChild(renderProperty(jerseyConfig, props[i]))
+  }
+  $cartMenu.appendChild($item)
 }

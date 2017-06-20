@@ -50,3 +50,18 @@ body {
   width: 50px;
   height: 50px;
 }
+
+#cart-menu > li > img {
+  padding: 2px;
+  width: 50%;
+  float: left;
+}
+
+#cart-menu > li {
+  border-bottom: 1px solid lightGrey;
+  padding-top: 4px;
+}
+
+#cart-menu > li > p {
+  font-size: 8px;
+}
