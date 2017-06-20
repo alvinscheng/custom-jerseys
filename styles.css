@@ -6,6 +6,15 @@ body {
   font-family: 'Graduate', cursive;
 }
 
+h6 {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.form-container {
+  width: 100%;
+}
+
 .jersey-image {
   position: absolute;
   width: 100%;
