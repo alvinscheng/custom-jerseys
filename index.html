@@ -38,7 +38,7 @@
               <li class="list-group-item">
                 <h6 class="list-group-item-heading">1. Options</h6>
                 <div id="options" class="list-group-item">
-                  <span class="choices" id="gender">
+                  <span id="gender">
                     <label class="option-labels">Gender: </label>
                     <label class="radio-inline">
                       <input type="radio" name="gender" id="male" value="male" checked="checked"/>Male
@@ -63,7 +63,7 @@
                 <div id="colors" class="list-group-item">
                   <div class="col-xs-6">
                     <label for="jersey-color-primary" class="option-labels control-label">Primary:</label>
-                    <select class="form-control choices" id="jersey-color-primary" name="color-primary">
+                    <select class="form-control" id="jersey-color-primary" name="color-primary">
                       <option value="white">White</option>
                       <option value="black">Black</option>
                       <option value="blue">Blue</option>
@@ -72,7 +72,7 @@
                   </div>
                   <div>
                     <label for="jersey-color-secondary" class="option-labels control-label">Secondary:</label>
-                    <select class="form-control choices" id="jersey-color-secondary" name="color-secondary">
+                    <select class="form-control" id="jersey-color-secondary" name="color-secondary">
                       <option value="white">White</option>
                       <option value="black">Black</option>
                       <option value="blue">Blue</option>
@@ -85,13 +85,15 @@
               <li class="list-group-item">
                 <h6 class="list-group-item-heading">3. Name and Number</h6>
                 <div id="name-number" class="form-horizontal list-group-item">
-                  <div class="choices">
-                    <label for="name" class="control-label">Name:</label>
-                    <input type="text" id="name" class="form-control choices" name="jersey-name" maxlength="10" placeholder="Lastname"/>
+                  <div class="form-group">
+                    <label for="name" class="col-sm-4 control-label">Name:</label>
+                    <div class="col-sm-8">
+                      <input type="text" id="name" class="form-control" name="jersey-name" maxlength="10" placeholder="Lastname"/>
+                    </div>
                   </div>
-                  <div class="form-group choices">
-                    <label for="number" class="col-xs-6 control-label">Number:</label>
-                    <div class="col-xs-6">
+                  <div class="form-group">
+                    <label for="number" class="col-sm-4 control-label">Number:</label>
+                    <div class="col-sm-8">
                       <input type="number" class="form-control" id="number" name="jersey-number" value="0" min="0" max="99"/>
                     </div>
                   </div>
@@ -102,7 +104,7 @@
               <li class="list-group-item">
                 <h6 class="list-group-item-heading">4. Add to Cart</h6>
                 <div id="add-cart" class="form-horizontal list-group-item">
-                  <div class="form-group choices">
+                  <div class="form-group">
                     <label for="quantity" class="col-xs-6 control-label">Quantity:</label>
                     <div class="col-xs-6">
                       <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" max="99"/>

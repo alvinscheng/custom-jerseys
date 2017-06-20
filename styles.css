@@ -6,10 +6,6 @@ body {
   font-family: 'Graduate', cursive;
 }
 
-.choices {
-  margin: 0.6rem 0;
-}
-
 .jersey-image {
   position: absolute;
   width: 100%;
