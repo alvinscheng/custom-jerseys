@@ -18,13 +18,13 @@ body {
 #jersey-name {
   top: 27%;
   text-align: center;
-  font-size: 2vw;
+  font-size: 25px;
 }
 
 #jersey-number {
   top: 35%;
   text-align: center;
-  font-size: 8vw;
+  font-size: 100px;
 }
 
 .cart-icon {
