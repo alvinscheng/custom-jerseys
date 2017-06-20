@@ -78,3 +78,7 @@ body {
 .option-labels {
   padding-right: 0.6em;
 }
+
+.form-control {
+  width: auto;
+}
