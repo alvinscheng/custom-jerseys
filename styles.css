@@ -30,8 +30,8 @@ body {
 .cart-icon {
   position: absolute;
   right: 0;
-  top: 0;
-  padding: 10px;
+  top: 1px;
+  padding: 12px;
 }
 
 #cart-icon {
