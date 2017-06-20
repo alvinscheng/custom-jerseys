@@ -65,3 +65,12 @@ body {
 #cart-menu > li > p {
   font-size: 8px;
 }
+
+#logo > img {
+  float: left;
+  height: 50px;
+}
+
+#navbar {
+  padding: 5px 20px;
+}
