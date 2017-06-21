@@ -9,6 +9,7 @@ var jerseyConfig = {
 
 var cartJersey = {}
 var cart = []
+var cartID = 0
 var $front = document.querySelector('#front-img')
 var $back = document.querySelector('#back-img')
 var $jerseyNumber = document.querySelector('#jersey-number')
@@ -92,9 +93,11 @@ function validate(obj) {
 function addToCart(item, qty) {
   cartJersey = item
   cartJersey.quantity = qty
+  cartID += 1
+  cartJersey.cartId = cartID
   cart.push(cartJersey)
   $cartCounter.textContent = countCartItems()
-  renderCartItem()
+  renderCartItems()
 }
 
 function renderImage(img) {
@@ -116,13 +119,14 @@ function renderDeleteButton() {
   $btn.addEventListener('click', function (event) {
     var confirmation = confirm('Are you sure you want to remove this from your cart?')
     if (confirmation) {
+      console.log($btn.parentNode.dataset.cartId)
       $btn.parentNode.remove()
     }
   })
   return $btn
 }
 
-function renderCartItem() {
+function renderCartItems() {
   var props = ['name', 'number', 'size']
   while ($cartMenu.hasChildNodes()) {
     $cartMenu.removeChild($cartMenu.lastChild)
@@ -136,6 +140,7 @@ function renderCartItem() {
     }
     $item.appendChild(renderDeleteButton())
     $item.appendChild(renderProperty(cart[i], 'quantity'))
+    $item.dataset.cartId = cart[i].cartId
     $cartMenu.appendChild($item)
   }
 }
