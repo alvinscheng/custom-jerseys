@@ -2,6 +2,10 @@
   margin: 0;
 }
 
+p {
+  margin: 0 0 6px;
+}
+
 body {
   font-family: 'Graduate', cursive;
 }

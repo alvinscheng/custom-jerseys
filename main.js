@@ -112,6 +112,12 @@ function renderProperty(item, prop) {
   return $prop
 }
 
+function renderText(item, text) {
+  var $text = document.createElement('p')
+  $text.textContent = text + ': '
+  return $text
+}
+
 function renderQuantInput(item) {
   var $input = document.createElement('input')
   $input.setAttribute('type', 'number')
@@ -152,6 +158,7 @@ function renderCartItems() {
     for (var j = 0; j < props.length; j++) {
       $item.appendChild(renderProperty(cart[i], props[j]))
     }
+    $item.appendChild(renderText(cart[i], 'quantity'))
     $item.appendChild(renderDeleteButton())
     $item.appendChild(renderQuantInput(cart[i]))
     $item.dataset.cartId = cart[i].cartId
