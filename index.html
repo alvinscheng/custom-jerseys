@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Custom Jerseys</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-C0X5qw1DlkeV0RDunhmi4cUBUkPDTvUqzElcNWm1NI2T4k8tKMZ+wRPQOhZfSJ9N" crossorigin="anonymous" />
     <link rel="stylesheet" href="styles.css"/>
     <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet"/>
   </head>
   <body>
     <header>
       <nav id="navbar" class="navbar navbar-default">
+        <div id="logo">
+          <img src="images/logo.png" alt="logo" />
+        </div>
         <div class="dropdown pull-right">
           <button class="btn btn-default dropdown-toggle icon-container" type="button" id="cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <span id="cart-icon" class="glyphicon glyphicon-shopping-cart cart-icon" aria-hidden="true"></span>
@@ -26,24 +29,25 @@
     </header>
     <div class="container">
       <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-0">
           <form class="panel panel-default" id="customize-form">
             <div class="panel-heading">
               <h4>Customize Your Jersey!</h4>
             </div>
             <ul class="list-group">
               <li class="list-group-item">
-                <h6 class="list-group-item-heading">1. Options</h6>
-                <div id="options" class="list-group-item">
-                  <div class="choices" id="gender">
+                <h6>1. Options</h6>
+                <div id="options" class="container form-container">
+                  <span id="gender">
+                    <label class="option-labels">Gender: </label>
                     <label class="radio-inline">
                       <input type="radio" name="gender" id="male" value="male" checked="checked"/>Male
                     </label>
                     <label class="radio-inline">
                       <input type="radio" name="gender" id="female" value="female"/>Female
                     </label>
-                  </div>
-                  <select id="jersey-size" name="size">
+                  </span>
+                  <select id="jersey-size" class="form-control pull-right" name="size">
                     <option value="">Size</option>
                     <option value="xs">XS</option>
                     <option value="s">S</option>
@@ -55,53 +59,56 @@
               </li>
 
               <li class="list-group-item">
-                <h6 class="list-group-item-heading">2. Color</h6>
-                <div id="colors" class="list-group-item">
-                  <div>
-                    Primary:
-                    <select class="choices" id="jersey-color-primary" name="color-primary">
-                      <option value="white">White</option>
-                      <option value="black">Black</option>
-                      <option value="blue">Blue</option>
-                      <option value="red">Red</option>
-                    </select>
-                  </div>
-                  <div>
-                    Secondary:
-                    <select class="choices" id="jersey-color-secondary" name="color-secondary">
-                      <option value="white">White</option>
-                      <option value="black">Black</option>
-                      <option value="blue">Blue</option>
-                      <option value="red">Red</option>
-                    </select>
+                <h6>2. Color</h6>
+                <div id="colors" class="container form-container">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <label for="jersey-color-primary" class="col-xs-7 option-labels control-label">Primary:</label>
+                      <select class="form-control col-xs-5" id="jersey-color-primary" name="color-primary">
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-6">
+                      <label for="jersey-color-secondary" class="col-xs-7 option-labels control-label">Secondary:</label>
+                      <select class="col-xs-5 form-control" id="jersey-color-secondary" name="color-secondary">
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </li>
 
               <li class="list-group-item">
-                <h6 class="list-group-item-heading">3. Name and Number</h6>
-                <div id="name-number" class="form-horizontal list-group-item">
-                  <div class="choices">
-                    <label for="name" class="control-label">Name:</label>
-                    <input type="text" id="name" class="form-control choices" name="jersey-name" maxlength="10" placeholder="Lastname"/>
+                <h6>3. Name and Number</h6>
+                <div id="name-number" class="form-horizontal">
+                  <div class="form-group">
+                    <label for="name" class="col-sm-4 control-label">Name:</label>
+                    <div class="col-sm-8">
+                      <input type="text" id="name" class="form-control" name="jersey-name" maxlength="10" placeholder="Lastname"/>
+                    </div>
                   </div>
-                  <div class="form-group choices">
-                    <label for="number" class="col-sm-6 control-label">Number:</label>
-                    <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="number" class="col-sm-4 control-label">Number:</label>
+                    <div class="col-sm-8">
                       <input type="number" class="form-control" id="number" name="jersey-number" value="0" min="0" max="99"/>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-default pull-right">Update</button>
-                  <br/>
+                  <button type="submit" class="btn btn-default btn-block">Update</button>
                 </div>
               </li>
 
               <li class="list-group-item">
-                <h6 class="list-group-item-heading">4. Add to Cart</h6>
-                <div id="add-cart" class="list-group-item">
-                  <div class="form-group pull-left choices">
-                    <label for="quantity" class="col-sm-6 control-label">Quantity:</label>
-                    <div class="col-sm-6">
+                <h6>4. Add to Cart</h6>
+                <div id="add-cart" class="form-horizontal">
+                  <div class="form-group">
+                    <label for="quantity" class="col-xs-6 control-label">Quantity:</label>
+                    <div class="col-xs-6">
                       <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" max="99"/>
                     </div>
                   </div>
@@ -111,12 +118,12 @@
             </ul>
           </form>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-6 col-md-4">
           <div class="jersey-image">
             <img id="front-img" src="images/male-white-white-front.jpg" class="img-responsive"/>
           </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-6 col-md-4">
           <div class="jersey-image">
             <img id="back-img" src="images/male-white-white-back.jpg" class="img-responsive"/>
             <div id="jersey-name" class="jersey-image">Lastname</div>
