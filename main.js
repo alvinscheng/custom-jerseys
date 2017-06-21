@@ -76,7 +76,6 @@ $cartButton.addEventListener('click', function (event) {
     var quantity = parseInt($quantity.value, 10)
     jerseyConfig.quantity = quantity
     addToCart(jerseyConfig, quantity)
-    activateDeleteBtn()
     $customizeForm.reset()
     resetJersey()
   }
@@ -112,10 +111,16 @@ function renderProperty(item, prop) {
   return $prop
 }
 
-function renderButton(name) {
+function renderDeleteButton() {
   var $btn = document.createElement('button')
-  $btn.textContent = name
+  $btn.textContent = 'Delete'
   $btn.classList.add('btn', 'btn-primary', 'btn-xs', 'pull-right', 'delete-btn')
+  $btn.addEventListener('click', function (event) {
+    var confirmation = confirm('Are you sure you want to remove this from your cart?')
+    if (confirmation) {
+      $btn.parentNode.remove()
+    }
+  })
   return $btn
 }
 
@@ -126,16 +131,21 @@ function renderCartItem() {
   for (var i = 0; i < props.length; i++) {
     $item.appendChild(renderProperty(jerseyConfig, props[i]))
   }
-  $item.appendChild(renderButton('Delete'))
+  $item.appendChild(renderDeleteButton())
   $item.appendChild(renderProperty(jerseyConfig, 'quantity'))
   $cartMenu.appendChild($item)
 }
 
+/*
 function activateDeleteBtn() {
   var $deleteButtons = document.querySelectorAll('.delete-btn')
   $deleteButtons.forEach(function ($btn) {
     $btn.addEventListener('click', function (event) {
-      $btn.parentNode.remove()
+      var confirmation = confirm('Are you sure you want to remove this from your cart?')
+      if (confirmation) {
+        $btn.parentNode.remove()
+      }
     })
   })
 }
+*/
