@@ -111,12 +111,21 @@ function renderProperty(item, prop) {
   return $prop
 }
 
+function renderButton(name) {
+  var $btn = document.createElement('button')
+  $btn.textContent = name
+  $btn.classList.add('btn', 'btn-primary', 'btn-xs', 'pull-right')
+  return $btn
+}
+
 function renderCartItem() {
   var $item = document.createElement('li')
   $item.appendChild(renderImage($back.src))
-  var props = ['name', 'number', 'size', 'quantity']
+  var props = ['name', 'number', 'size']
   for (var i = 0; i < props.length; i++) {
     $item.appendChild(renderProperty(jerseyConfig, props[i]))
   }
+  $item.appendChild(renderButton('Delete'))
+  $item.appendChild(renderProperty(jerseyConfig, 'quantity'))
   $cartMenu.appendChild($item)
 }
