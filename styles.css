@@ -56,6 +56,10 @@ h6 {
   height: 50px;
 }
 
+#cart-menu > li > button {
+  margin-right: 10px;
+}
+
 #cart-menu > li > img {
   padding: 2px 10px;
   width: 40%;
