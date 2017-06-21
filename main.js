@@ -124,6 +124,15 @@ function renderQuantInput(item) {
   $input.setAttribute('value', item.quantity)
   $input.setAttribute('min', 1)
   $input.setAttribute('max', 99)
+  $input.addEventListener('change', function (event) {
+    for (var i = 0; i < cart.length; i++) {
+      if (parseInt($input.parentNode.dataset.cartId, 10) === cart[i].cartId) {
+        cart[i].quantity = parseInt(event.target.value, 10)
+      }
+    }
+    renderCartItems()
+    $cartCounter.textContent = countCartItems()
+  })
   return $input
 }
 
