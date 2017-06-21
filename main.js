@@ -119,8 +119,13 @@ function renderDeleteButton() {
   $btn.addEventListener('click', function (event) {
     var confirmation = confirm('Are you sure you want to remove this from your cart?')
     if (confirmation) {
-      console.log($btn.parentNode.dataset.cartId)
-      $btn.parentNode.remove()
+      for (var i = 0; i < cart.length; i++) {
+        if (parseInt($btn.parentNode.dataset.cartId, 10) === cart[i].cartId) {
+          cart.splice(i, 1)
+        }
+      }
+      renderCartItems()
+      $cartCounter.textContent = countCartItems()
     }
   })
   return $btn
