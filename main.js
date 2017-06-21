@@ -112,6 +112,15 @@ function renderProperty(item, prop) {
   return $prop
 }
 
+function renderQuantInput(item) {
+  var $input = document.createElement('input')
+  $input.setAttribute('type', 'number')
+  $input.setAttribute('value', item.quantity)
+  $input.setAttribute('min', 1)
+  $input.setAttribute('max', 99)
+  return $input
+}
+
 function renderDeleteButton() {
   var $btn = document.createElement('button')
   $btn.textContent = 'Delete'
@@ -144,7 +153,7 @@ function renderCartItems() {
       $item.appendChild(renderProperty(cart[i], props[j]))
     }
     $item.appendChild(renderDeleteButton())
-    $item.appendChild(renderProperty(cart[i], 'quantity'))
+    $item.appendChild(renderQuantInput(cart[i]))
     $item.dataset.cartId = cart[i].cartId
     $cartMenu.appendChild($item)
   }
