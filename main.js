@@ -123,15 +123,21 @@ function renderDeleteButton() {
 }
 
 function renderCartItem() {
-  var $item = document.createElement('li')
-  $item.appendChild(renderImage($back.src))
   var props = ['name', 'number', 'size']
-  for (var i = 0; i < props.length; i++) {
-    $item.appendChild(renderProperty(jerseyConfig, props[i]))
+  while ($cartMenu.hasChildNodes()) {
+    $cartMenu.removeChild($cartMenu.lastChild)
   }
-  $item.appendChild(renderDeleteButton())
-  $item.appendChild(renderProperty(jerseyConfig, 'quantity'))
-  $cartMenu.appendChild($item)
+  for (var i = 0; i < cart.length; i++) {
+    var $item = document.createElement('li')
+    var picture = 'images/' + cart[i].gender + '-' + cart[i].primaryColor + '-' + cart[i].secondaryColor + '-back.jpg'
+    $item.appendChild(renderImage(picture))
+    for (var j = 0; j < props.length; j++) {
+      $item.appendChild(renderProperty(cart[i], props[j]))
+    }
+    $item.appendChild(renderDeleteButton())
+    $item.appendChild(renderProperty(cart[i], 'quantity'))
+    $cartMenu.appendChild($item)
+  }
 }
 
 function countCartItems() {
