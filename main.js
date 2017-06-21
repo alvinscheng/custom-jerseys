@@ -133,7 +133,7 @@ function renderDeleteButton() {
 
 function renderCartItems() {
   var props = ['name', 'number', 'size']
-  while ($cartMenu.hasChildNodes()) {
+  while ($cartMenu.lastChild.id !== 'checkout-btn') {
     $cartMenu.removeChild($cartMenu.lastChild)
   }
   for (var i = 0; i < cart.length; i++) {
