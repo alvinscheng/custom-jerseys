@@ -4,10 +4,10 @@ var jerseyConfig = {
   primaryColor: 'white',
   secondaryColor: 'white',
   name: 'Lastname',
-  number: 0,
-  quantity: 1
+  number: 0
 }
 
+var cartJersey = {}
 var cart = []
 var $front = document.querySelector('#front-img')
 var $back = document.querySelector('#back-img')
@@ -37,8 +37,7 @@ function resetJersey() {
     primaryColor: 'white',
     secondaryColor: 'white',
     name: 'Lastname',
-    number: 0,
-    quantity: 1
+    number: 0
   }
   changeJersey(jerseyConfig)
 }
@@ -74,7 +73,6 @@ $customizeForm.addEventListener('submit', function (event) {
 $cartButton.addEventListener('click', function (event) {
   if (validate(jerseyConfig)) {
     var quantity = parseInt($quantity.value, 10)
-    jerseyConfig.quantity = quantity
     addToCart(jerseyConfig, quantity)
     $customizeForm.reset()
     resetJersey()
@@ -92,10 +90,10 @@ function validate(obj) {
 }
 
 function addToCart(item, qty) {
-  for (var i = 0; i < qty; i++) {
-    cart.push(item)
-  }
-  $cartCounter.textContent = cart.length
+  cartJersey = item
+  cartJersey.quantity = qty
+  cart.push(cartJersey)
+  $cartCounter.textContent = countCartItems()
   renderCartItem()
 }
 
@@ -136,16 +134,10 @@ function renderCartItem() {
   $cartMenu.appendChild($item)
 }
 
-/*
-function activateDeleteBtn() {
-  var $deleteButtons = document.querySelectorAll('.delete-btn')
-  $deleteButtons.forEach(function ($btn) {
-    $btn.addEventListener('click', function (event) {
-      var confirmation = confirm('Are you sure you want to remove this from your cart?')
-      if (confirmation) {
-        $btn.parentNode.remove()
-      }
-    })
-  })
+function countCartItems() {
+  var cartCount = 0
+  for (var i = 0; i < cart.length; i++) {
+    cartCount += cart[i].quantity
+  }
+  return cartCount
 }
-*/
