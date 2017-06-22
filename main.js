@@ -84,7 +84,7 @@ $checkoutForm.addEventListener('submit', function (event) {
   event.preventDefault()
   var confirmation = confirm('Are you sure you want to make this purchase?')
   if (confirmation) {
-    $checkoutForm.reset()
+    location.reload()
   }
 })
 
