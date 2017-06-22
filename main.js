@@ -136,6 +136,7 @@ function renderQuantInput(item) {
     for (var i = 0; i < cart.length; i++) {
       if (parseInt($input.parentNode.dataset.cartId, 10) === cart[i].cartId) {
         cart[i].quantity = parseInt(event.target.value, 10)
+        cart[i].price = 25 * cart[i].quantity
       }
     }
     renderCartItems()
