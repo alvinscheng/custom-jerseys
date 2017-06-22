@@ -26,6 +26,7 @@ var $cartMenu = document.querySelector('#cart-menu')
 var $jerseyCost = document.querySelector('#cost')
 var $totalCost = document.querySelector('#final-price')
 var $checkoutCost = document.querySelector('#checkout-cost')
+var $checkoutButton = document.querySelector('#checkout-button')
 var $checkoutForm = document.querySelector('#checkout-form')
 
 function changeJersey(config) {
@@ -87,6 +88,15 @@ $checkoutForm.addEventListener('submit', function (event) {
     location.reload()
   }
 })
+
+function disableCheckout() {
+  if (cart.length === 0) {
+    $checkoutButton.disabled = true
+  }
+  else {
+    $checkoutButton.disabled = false
+  }
+}
 
 $cartButton.addEventListener('click', function (event) {
   if (validate(jerseyConfig)) {
@@ -200,6 +210,7 @@ function renderCartItems() {
   $cartCounter.textContent = countItems(cart)
   $totalCost.textContent = calculateTotalCost(cart)
   $checkoutCost.textContent = $totalCost.textContent
+  disableCheckout()
 }
 
 function countItems(list) {
