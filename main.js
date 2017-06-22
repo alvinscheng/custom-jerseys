@@ -99,6 +99,7 @@ function validate(obj) {
 function addToCart(item, qty) {
   cartJersey = item
   cartJersey.quantity = qty
+  cartJersey.price = parseInt($jerseyCost.textContent, 10)
   cartID += 1
   cartJersey.cartId = cartID
   cart.push(cartJersey)
@@ -121,6 +122,7 @@ function renderProperty(item, prop) {
 function renderText(item, text) {
   var $text = document.createElement('p')
   $text.textContent = text + ': '
+  $text.classList.add('inline-block')
   return $text
 }
 
@@ -174,8 +176,9 @@ function renderCartItems() {
       $item.appendChild(renderProperty(cart[i], props[j]))
     }
     $item.appendChild(renderText(cart[i], 'quantity'))
-    $item.appendChild(renderDeleteButton())
     $item.appendChild(renderQuantInput(cart[i]))
+    $item.appendChild(renderDeleteButton())
+    $item.appendChild(renderProperty(cart[i], 'price'))
     $item.dataset.cartId = cart[i].cartId
     $cartMenu.appendChild($item)
   }
