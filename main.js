@@ -4,11 +4,12 @@ var jerseyConfig = {
   primaryColor: 'white',
   secondaryColor: 'white',
   name: 'Lastname',
-  number: 0,
-  quantity: 1
+  number: 0
 }
 
+var cartJersey = {}
 var cart = []
+var cartID = 0
 var $front = document.querySelector('#front-img')
 var $back = document.querySelector('#back-img')
 var $jerseyNumber = document.querySelector('#jersey-number')
@@ -37,8 +38,7 @@ function resetJersey() {
     primaryColor: 'white',
     secondaryColor: 'white',
     name: 'Lastname',
-    number: 0,
-    quantity: 1
+    number: 0
   }
   changeJersey(jerseyConfig)
 }
@@ -74,7 +74,6 @@ $customizeForm.addEventListener('submit', function (event) {
 $cartButton.addEventListener('click', function (event) {
   if (validate(jerseyConfig)) {
     var quantity = parseInt($quantity.value, 10)
-    jerseyConfig.quantity = quantity
     addToCart(jerseyConfig, quantity)
     $customizeForm.reset()
     resetJersey()
@@ -92,11 +91,13 @@ function validate(obj) {
 }
 
 function addToCart(item, qty) {
-  for (var i = 0; i < qty; i++) {
-    cart.push(item)
-  }
-  $cartCounter.textContent = cart.length
-  renderCartItem()
+  cartJersey = item
+  cartJersey.quantity = qty
+  cartID += 1
+  cartJersey.cartId = cartID
+  cart.push(cartJersey)
+  $cartCounter.textContent = countCartItems()
+  renderCartItems()
 }
 
 function renderImage(img) {
@@ -111,12 +112,73 @@ function renderProperty(item, prop) {
   return $prop
 }
 
-function renderCartItem() {
-  var $item = document.createElement('li')
-  $item.appendChild(renderImage($back.src))
-  var props = ['name', 'number', 'size', 'quantity']
-  for (var i = 0; i < props.length; i++) {
-    $item.appendChild(renderProperty(jerseyConfig, props[i]))
+function renderText(item, text) {
+  var $text = document.createElement('p')
+  $text.textContent = text + ': '
+  return $text
+}
+
+function renderQuantInput(item) {
+  var $input = document.createElement('input')
+  $input.setAttribute('type', 'number')
+  $input.setAttribute('value', item.quantity)
+  $input.setAttribute('min', 1)
+  $input.setAttribute('max', 99)
+  $input.addEventListener('change', function (event) {
+    for (var i = 0; i < cart.length; i++) {
+      if (parseInt($input.parentNode.dataset.cartId, 10) === cart[i].cartId) {
+        cart[i].quantity = parseInt(event.target.value, 10)
+      }
+    }
+    renderCartItems()
+    $cartCounter.textContent = countCartItems()
+  })
+  return $input
+}
+
+function renderDeleteButton() {
+  var $btn = document.createElement('button')
+  $btn.textContent = 'Delete'
+  $btn.classList.add('btn', 'btn-primary', 'btn-xs', 'pull-right', 'delete-btn')
+  $btn.addEventListener('click', function (event) {
+    var confirmation = confirm('Are you sure you want to remove this from your cart?')
+    if (confirmation) {
+      for (var i = 0; i < cart.length; i++) {
+        if (parseInt($btn.parentNode.dataset.cartId, 10) === cart[i].cartId) {
+          cart.splice(i, 1)
+        }
+      }
+      renderCartItems()
+      $cartCounter.textContent = countCartItems()
+    }
+  })
+  return $btn
+}
+
+function renderCartItems() {
+  var props = ['name', 'number', 'size']
+  while ($cartMenu.lastChild.id !== 'checkout-btn') {
+    $cartMenu.removeChild($cartMenu.lastChild)
   }
-  $cartMenu.appendChild($item)
+  for (var i = 0; i < cart.length; i++) {
+    var $item = document.createElement('li')
+    var picture = 'images/' + cart[i].gender + '-' + cart[i].primaryColor + '-' + cart[i].secondaryColor + '-back.jpg'
+    $item.appendChild(renderImage(picture))
+    for (var j = 0; j < props.length; j++) {
+      $item.appendChild(renderProperty(cart[i], props[j]))
+    }
+    $item.appendChild(renderText(cart[i], 'quantity'))
+    $item.appendChild(renderDeleteButton())
+    $item.appendChild(renderQuantInput(cart[i]))
+    $item.dataset.cartId = cart[i].cartId
+    $cartMenu.appendChild($item)
+  }
+}
+
+function countCartItems() {
+  var cartCount = 0
+  for (var i = 0; i < cart.length; i++) {
+    cartCount += cart[i].quantity
+  }
+  return cartCount
 }
