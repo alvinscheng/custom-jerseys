@@ -117,3 +117,9 @@ h6 {
   text-align: center;
   padding: 5px 15px;
 }
+
+#checkout-total-cost {
+  font-style: italic;
+  color: #8e44ad;
+  padding: 8px;
+}

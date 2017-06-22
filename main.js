@@ -25,6 +25,7 @@ var $cartCounter = document.querySelector('#cart-quant')
 var $cartMenu = document.querySelector('#cart-menu')
 var $jerseyCost = document.querySelector('#cost')
 var $totalCost = document.querySelector('#final-price')
+var $checkoutCost = document.querySelector('#checkout-cost')
 
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
@@ -108,6 +109,7 @@ function addToCart(item, qty) {
   cart.push(cartJersey)
   $cartCounter.textContent = countItems(cart)
   $totalCost.textContent = calculateTotalCost(cart)
+  $checkoutCost.textContent = $totalCost.textContent
   renderCartItems()
 }
 
@@ -188,6 +190,7 @@ function renderCartItems() {
   }
   $cartCounter.textContent = countItems(cart)
   $totalCost.textContent = calculateTotalCost(cart)
+  $checkoutCost.textContent = $totalCost.textContent
 }
 
 function countItems(list) {
