@@ -105,3 +105,10 @@ h6 {
 .inline-block {
   display: inline-block;
 }
+
+#total-cost {
+  font-size: 10px;
+  font-style: italic;
+  color: #95a5a6;
+  padding-top: 3px;
+}
