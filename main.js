@@ -106,8 +106,8 @@ function addToCart(item, qty) {
   cartID += 1
   cartJersey.cartId = cartID
   cart.push(cartJersey)
-  $cartCounter.textContent = countCartItems()
-  $totalCost.textContent = calculateTotalCost()
+  $cartCounter.textContent = countItems(cart)
+  $totalCost.textContent = calculateTotalCost(cart)
   renderCartItems()
 }
 
@@ -186,22 +186,22 @@ function renderCartItems() {
     $item.dataset.cartId = cart[i].cartId
     $cartMenu.appendChild($item)
   }
-  $cartCounter.textContent = countCartItems()
-  $totalCost.textContent = calculateTotalCost()
+  $cartCounter.textContent = countItems(cart)
+  $totalCost.textContent = calculateTotalCost(cart)
 }
 
-function countCartItems() {
-  var cartCount = 0
-  for (var i = 0; i < cart.length; i++) {
-    cartCount += cart[i].quantity
+function countItems(list) {
+  var count = 0
+  for (var i = 0; i < list.length; i++) {
+    count += list[i].quantity
   }
-  return cartCount
+  return count
 }
 
-function calculateTotalCost() {
+function calculateTotalCost(list) {
   var cost = 0
-  for (var i = 0; i < cart.length; i++) {
-    cost += cart[i].price
+  for (var i = 0; i < list.length; i++) {
+    cost += list[i].price
   }
   return cost
 }
