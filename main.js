@@ -23,6 +23,7 @@ var $quantity = document.querySelector('#quantity')
 var $cartButton = document.querySelector('#cart-btn')
 var $cartCounter = document.querySelector('#cart-quant')
 var $cartMenu = document.querySelector('#cart-menu')
+var $jerseyCost = document.querySelector('#cost')
 
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
@@ -60,6 +61,11 @@ $primaryColor.addEventListener('change', function (event) {
 $secondaryColor.addEventListener('change', function (event) {
   jerseyConfig.secondaryColor = event.target.value
   changeJersey(jerseyConfig)
+})
+
+$quantity.addEventListener('change', function (event) {
+  var quant = parseInt($quantity.value, 10)
+  $jerseyCost.textContent = quant * 25
 })
 
 $customizeForm.addEventListener('submit', function (event) {
