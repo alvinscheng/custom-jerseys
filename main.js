@@ -26,6 +26,7 @@ var $cartMenu = document.querySelector('#cart-menu')
 var $jerseyCost = document.querySelector('#cost')
 var $totalCost = document.querySelector('#final-price')
 var $checkoutCost = document.querySelector('#checkout-cost')
+var $checkoutForm = document.querySelector('#checkout-form')
 
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
@@ -77,6 +78,14 @@ $customizeForm.addEventListener('submit', function (event) {
   jerseyConfig.name = $name.value
   jerseyConfig.number = $number.value
   changeJersey(jerseyConfig)
+})
+
+$checkoutForm.addEventListener('submit', function (event) {
+  event.preventDefault()
+  var confirmation = confirm('Are you sure you want to make this purchase?')
+  if (confirmation) {
+    $checkoutForm.reset()
+  }
 })
 
 $cartButton.addEventListener('click', function (event) {
