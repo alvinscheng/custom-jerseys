@@ -83,6 +83,7 @@ $cartButton.addEventListener('click', function (event) {
     var quantity = parseInt($quantity.value, 10)
     addToCart(jerseyConfig, quantity)
     $customizeForm.reset()
+    $jerseyCost.textContent = 25
     resetJersey()
   }
 })
