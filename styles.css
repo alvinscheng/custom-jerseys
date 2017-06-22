@@ -92,7 +92,7 @@ h6 {
   padding-right: 0.6em;
 }
 
-.form-control {
+#customize-form .form-control {
   width: auto;
 }
 
