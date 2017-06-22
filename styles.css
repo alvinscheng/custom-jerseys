@@ -2,10 +2,6 @@
   margin: 0;
 }
 
-p {
-  margin: 0 0 6px;
-}
-
 body {
   font-family: 'Graduate', cursive;
 }
@@ -61,18 +57,19 @@ h6 {
 }
 
 #cart-menu > li > button {
-  margin-right: 10px;
+  margin: 5px 8px 0 0;
 }
 
 #cart-menu > li > input {
   width: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
+  margin-left: 10px;
 }
 
 #cart-menu > li > img {
   padding: 2px 10px;
-  width: 40%;
+  width: 50%;
   float: left;
 }
 
@@ -97,4 +94,21 @@ h6 {
 
 .form-control {
   width: auto;
+}
+
+#jersey-price {
+  padding: 9px 20px 0;
+  font-size: 16px;
+  color: #8e44ad;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+#total-cost {
+  font-size: 10px;
+  font-style: italic;
+  color: #95a5a6;
+  padding-top: 3px;
 }

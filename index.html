@@ -22,7 +22,9 @@
             <span class="caret"></span>
           </button>
           <ul id="cart-menu" class="dropdown-menu" aria-labelledby="cart">
-            <li id="checkout-btn"><a href="#">Checkout</a></li>
+            <li id="checkout-btn">
+              <a href="#">Checkout <span id="total-cost" class="pull-right">Total Cost: $<span id="final-price">0</span></span></a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -110,6 +112,10 @@
                     <label for="quantity" class="col-xs-6 control-label">Quantity:</label>
                     <div class="col-xs-6">
                       <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" max="99"/>
+                    </div>
+                    <label for="cost" class="col-xs-6 control-label">Cost: </label>
+                    <div id="jersey-price" class="col-xs-6">
+                      $<span id="cost">25</span>
                     </div>
                   </div>
                   <button type="button" id="cart-btn" class="btn btn-default btn-block">Add to Cart</button>

@@ -23,6 +23,8 @@ var $quantity = document.querySelector('#quantity')
 var $cartButton = document.querySelector('#cart-btn')
 var $cartCounter = document.querySelector('#cart-quant')
 var $cartMenu = document.querySelector('#cart-menu')
+var $jerseyCost = document.querySelector('#cost')
+var $totalCost = document.querySelector('#final-price')
 
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
@@ -62,6 +64,11 @@ $secondaryColor.addEventListener('change', function (event) {
   changeJersey(jerseyConfig)
 })
 
+$quantity.addEventListener('change', function (event) {
+  var quant = parseInt($quantity.value, 10)
+  $jerseyCost.textContent = quant * 25
+})
+
 $customizeForm.addEventListener('submit', function (event) {
   event.preventDefault()
   var $number = document.querySelector('#number')
@@ -76,6 +83,7 @@ $cartButton.addEventListener('click', function (event) {
     var quantity = parseInt($quantity.value, 10)
     addToCart(jerseyConfig, quantity)
     $customizeForm.reset()
+    $jerseyCost.textContent = 25
     resetJersey()
   }
 })
@@ -93,10 +101,13 @@ function validate(obj) {
 function addToCart(item, qty) {
   cartJersey = item
   cartJersey.quantity = qty
+  cartJersey.price = parseInt($jerseyCost.textContent, 10)
+  cartJersey.cost = '$' + cartJersey.price
   cartID += 1
   cartJersey.cartId = cartID
   cart.push(cartJersey)
-  $cartCounter.textContent = countCartItems()
+  $cartCounter.textContent = countItems(cart)
+  $totalCost.textContent = calculateTotalCost(cart)
   renderCartItems()
 }
 
@@ -114,7 +125,8 @@ function renderProperty(item, prop) {
 
 function renderText(item, text) {
   var $text = document.createElement('p')
-  $text.textContent = text + ': '
+  $text.textContent = text
+  $text.classList.add('inline-block')
   return $text
 }
 
@@ -128,10 +140,11 @@ function renderQuantInput(item) {
     for (var i = 0; i < cart.length; i++) {
       if (parseInt($input.parentNode.dataset.cartId, 10) === cart[i].cartId) {
         cart[i].quantity = parseInt(event.target.value, 10)
+        cart[i].price = 25 * cart[i].quantity
+        cart[i].cost = '$' + cart[i].price
       }
     }
     renderCartItems()
-    $cartCounter.textContent = countCartItems()
   })
   return $input
 }
@@ -149,7 +162,6 @@ function renderDeleteButton() {
         }
       }
       renderCartItems()
-      $cartCounter.textContent = countCartItems()
     }
   })
   return $btn
@@ -167,18 +179,29 @@ function renderCartItems() {
     for (var j = 0; j < props.length; j++) {
       $item.appendChild(renderProperty(cart[i], props[j]))
     }
-    $item.appendChild(renderText(cart[i], 'quantity'))
-    $item.appendChild(renderDeleteButton())
+    $item.appendChild(renderText(cart[i], 'quantity: '))
     $item.appendChild(renderQuantInput(cart[i]))
+    $item.appendChild(renderDeleteButton())
+    $item.appendChild(renderProperty(cart[i], 'cost'))
     $item.dataset.cartId = cart[i].cartId
     $cartMenu.appendChild($item)
   }
+  $cartCounter.textContent = countItems(cart)
+  $totalCost.textContent = calculateTotalCost(cart)
 }
 
-function countCartItems() {
-  var cartCount = 0
-  for (var i = 0; i < cart.length; i++) {
-    cartCount += cart[i].quantity
+function countItems(list) {
+  var count = 0
+  for (var i = 0; i < list.length; i++) {
+    count += list[i].quantity
   }
-  return cartCount
+  return count
+}
+
+function calculateTotalCost(list) {
+  var cost = 0
+  for (var i = 0; i < list.length; i++) {
+    cost += list[i].price
+  }
+  return cost
 }
