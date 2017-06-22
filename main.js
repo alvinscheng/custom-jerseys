@@ -152,7 +152,7 @@ function renderQuantInput(item) {
 function renderDeleteButton() {
   var $btn = document.createElement('button')
   $btn.textContent = 'Delete'
-  $btn.classList.add('btn', 'btn-primary', 'btn-xs', 'pull-right', 'delete-btn')
+  $btn.classList.add('btn', 'btn-xs', 'pull-right', 'delete-btn')
   $btn.addEventListener('click', function (event) {
     var confirmation = confirm('Are you sure you want to remove this from your cart?')
     if (confirmation) {
