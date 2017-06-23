@@ -23,12 +23,92 @@
           </button>
           <ul id="cart-menu" class="dropdown-menu" aria-labelledby="cart">
             <li id="checkout-btn">
-              <a href="#">Checkout <span id="total-cost" class="pull-right">Total Cost: $<span id="final-price">0</span></span></a>
+              <button type="button" id="checkout-button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#checkout-modal" disabled>
+                Checkout
+              </button>
+              <span id="total-cost">Total Cost: $<span id="final-price">0</span></span>
             </li>
           </ul>
         </div>
       </nav>
     </header>
+
+    <div class="modal fade" id="checkout-modal" tabindex="-1" role="dialog" aria-labelledby="checkout-title">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title text-center" id="checkout-title">Checkout</h4>
+          </div>
+          <div class="modal-body">
+            <form id="checkout-form">
+              <div class="container-fluid">
+                <div class="row">
+                  <label class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0" for="first-name">
+                    First Name:
+                    <input class="form-control" type="text" id="first-name" required/>
+                  </label>
+                  <label class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0" for="last-name">
+                    Last Name:
+                    <input class="form-control" type="text" id="last-name" required/>
+                  </label>
+                </div>
+                <div class="row">
+                  <label class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0" for="email">
+                    Email:
+                    <input class="form-control" type="email" id="email" required/>
+                  </label>
+                  <label class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0" for="phone-number">
+                    Phone:
+                    <input class="form-control" type="tel" id="phone-number"/>
+                  </label>
+                </div>
+                <div class="row">
+                  <label class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0" for="credit-card">
+                    Credit Card:
+                    <input class="form-control" type="text" id="credit-card" required/>
+                  </label>
+                  <label class="col-xs-7 col-xs-offset-1 col-sm-5 col-sm-offset-0" for="card-exp-date">
+                    Exp Date:
+                    <input class="form-control" type="month" min="2017-01" max="2029-12" id="card-exp-date" required/>
+                  </label>
+                  <label class="col-xs-3 col-sm-2" for="card-sec-code">
+                    Security:
+                    <input class="form-control" type="text" id="card-sec-code" required/>
+                  </label>
+                </div>
+                <div class="row">
+                  <label class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0" for="address">
+                    Address:
+                    <input class="form-control" type="text" id="address" required/>
+                  </label>
+                </div>
+                <div class="row">
+                  <label class="col-xs-6 col-xs-offset-1 col-sm-6 col-sm-offset-0" for="address-city">
+                    City:
+                    <input class="form-control" type="text" id="address-city" required/>
+                  </label>
+                  <label class="col-xs-4 col-sm-2 col-sm-offset-0" for="address-state">
+                    State:
+                    <input class="form-control" type="text" maxlength="2" id="address-state" required/>
+                  </label>
+                  <label class="col-xs-10  col-xs-offset-1 col-sm-4 col-sm-offset-0" for="address-zip">
+                    Zip Code:
+                    <input class="form-control" type="text" maxlength="5" id="address-zip" required/>
+                  </label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <span id="checkout-total-cost" class="pull-left">Total Cost: $<span id="checkout-cost">0</span></span>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+                <button type="submit" class="btn btn-primary">Submit Payment</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-0">

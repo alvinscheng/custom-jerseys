@@ -1,6 +1,6 @@
 var jerseyConfig = {
   gender: 'male',
-  size: null,
+  size: '',
   primaryColor: 'white',
   secondaryColor: 'white',
   name: 'Lastname',
@@ -25,6 +25,9 @@ var $cartCounter = document.querySelector('#cart-quant')
 var $cartMenu = document.querySelector('#cart-menu')
 var $jerseyCost = document.querySelector('#cost')
 var $totalCost = document.querySelector('#final-price')
+var $checkoutCost = document.querySelector('#checkout-cost')
+var $checkoutButton = document.querySelector('#checkout-button')
+var $checkoutForm = document.querySelector('#checkout-form')
 
 function changeJersey(config) {
   $front.src = 'images/' + config.gender + '-' + config.primaryColor + '-' + config.secondaryColor + '-front.jpg'
@@ -36,7 +39,7 @@ function changeJersey(config) {
 function resetJersey() {
   jerseyConfig = {
     gender: 'male',
-    size: null,
+    size: '',
     primaryColor: 'white',
     secondaryColor: 'white',
     name: 'Lastname',
@@ -78,6 +81,18 @@ $customizeForm.addEventListener('submit', function (event) {
   changeJersey(jerseyConfig)
 })
 
+$checkoutForm.addEventListener('submit', function (event) {
+  event.preventDefault()
+  var confirmation = confirm('Are you sure you want to make this purchase?')
+  if (confirmation) {
+    location.reload()
+  }
+})
+
+function disableCheckout() {
+  $checkoutButton.disabled = cart.length === 0
+}
+
 $cartButton.addEventListener('click', function (event) {
   if (validate(jerseyConfig)) {
     var quantity = parseInt($quantity.value, 10)
@@ -90,7 +105,7 @@ $cartButton.addEventListener('click', function (event) {
 
 function validate(obj) {
   for (var prop in obj) {
-    if (obj[prop] === null) {
+    if (obj[prop] === '') {
       alert(prop + ' must be selected!')
       return false
     }
@@ -108,6 +123,7 @@ function addToCart(item, qty) {
   cart.push(cartJersey)
   $cartCounter.textContent = countItems(cart)
   $totalCost.textContent = calculateTotalCost(cart)
+  $checkoutCost.textContent = $totalCost.textContent
   renderCartItems()
 }
 
@@ -152,7 +168,7 @@ function renderQuantInput(item) {
 function renderDeleteButton() {
   var $btn = document.createElement('button')
   $btn.textContent = 'Delete'
-  $btn.classList.add('btn', 'btn-primary', 'btn-xs', 'pull-right', 'delete-btn')
+  $btn.classList.add('btn', 'btn-xs', 'pull-right', 'delete-btn')
   $btn.addEventListener('click', function (event) {
     var confirmation = confirm('Are you sure you want to remove this from your cart?')
     if (confirmation) {
@@ -188,6 +204,8 @@ function renderCartItems() {
   }
   $cartCounter.textContent = countItems(cart)
   $totalCost.textContent = calculateTotalCost(cart)
+  $checkoutCost.textContent = $totalCost.textContent
+  disableCheckout()
 }
 
 function countItems(list) {
