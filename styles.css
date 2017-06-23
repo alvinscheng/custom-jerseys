@@ -18,6 +18,7 @@ h6 {
 .jersey-image {
   position: absolute;
   width: 100%;
+  color: #34495e;
 }
 
 #jersey-name {
@@ -47,8 +48,8 @@ h6 {
 #cart-quant {
   font-size: 0.8em;
   color: #2c3e50;
-  top: 3px;
-  right: 9px;
+  top: 4px;
+  right: 7px;
 }
 
 .icon-container {
@@ -90,10 +91,15 @@ h6 {
 
 .option-labels {
   padding-right: 0.6em;
+  padding-left: 0;
 }
 
 #customize-form .form-control {
   width: auto;
+}
+
+#customize-form #name {
+  width: 85%;
 }
 
 #jersey-price {
@@ -122,4 +128,23 @@ h6 {
   font-style: italic;
   color: #8e44ad;
   padding: 8px;
+}
+
+@media (max-width: 600px) {
+  #jersey-name {
+    font-size: 1.3em;
+  }
+
+  #jersey-number {
+    font-size: 6em;
+  }
+
+  #jersey-size {
+    float: none !important;
+    margin-top: 8px;
+  }
+
+  .option-labels {
+    display: block;
+  }
 }
