@@ -90,12 +90,7 @@ $checkoutForm.addEventListener('submit', function (event) {
 })
 
 function disableCheckout() {
-  if (cart.length === 0) {
-    $checkoutButton.disabled = true
-  }
-  else {
-    $checkoutButton.disabled = false
-  }
+  $checkoutButton.disabled = cart.length === 0
 }
 
 $cartButton.addEventListener('click', function (event) {
