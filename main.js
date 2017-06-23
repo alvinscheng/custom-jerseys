@@ -1,6 +1,6 @@
 var jerseyConfig = {
   gender: 'male',
-  size: null,
+  size: '',
   primaryColor: 'white',
   secondaryColor: 'white',
   name: 'Lastname',
@@ -39,7 +39,7 @@ function changeJersey(config) {
 function resetJersey() {
   jerseyConfig = {
     gender: 'male',
-    size: null,
+    size: '',
     primaryColor: 'white',
     secondaryColor: 'white',
     name: 'Lastname',
@@ -110,7 +110,7 @@ $cartButton.addEventListener('click', function (event) {
 
 function validate(obj) {
   for (var prop in obj) {
-    if (obj[prop] === null) {
+    if (obj[prop] === '') {
       alert(prop + ' must be selected!')
       return false
     }
